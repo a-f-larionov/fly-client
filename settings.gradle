@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "FlySwatter_001"
+rootProject.name = "FlyClient"
