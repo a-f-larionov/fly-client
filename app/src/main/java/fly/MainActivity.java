@@ -1,4 +1,4 @@
-package com.example.flyswatter_001;
+package fly;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,19 +12,23 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.flyswatter_001.R;
+
 public class MainActivity extends AppCompatActivity {
 
-    ImageView flyImage;
+    private ImageView flyImage;
 
-    Score score;
+    private Score score;
 
-    Timer timer;
+    private Timer timer;
 
-    long catchTimeout = 1000 * 4;
-    int nextFlyMaxTimeout = 1000 * 4;
+    private Fly fly;
 
-    int screenWidth;
-    int screenHeight;
+    private long catchTimeout = 1000 * 4;
+    private int nextFlyMaxTimeout = 1000 * 4;
+
+    private int screenWidth;
+    private int screenHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         score = new Score((TextView) findViewById(R.id.scoreText));
 
         timer = new Timer((TextView) findViewById(R.id.timeoutText));
+
         timer.setOnTimeoutCallback(new Runnable() {
             @Override
             public void run() {
@@ -48,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        flyImage = (ImageView) findViewById(R.id.flyImage);
+        flyImage = findViewById(R.id.flyImage);
 
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
@@ -73,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
         /**
          * show Проиграл
          */
+
+        // save score
+
+
     }
 
     public void showFly() {

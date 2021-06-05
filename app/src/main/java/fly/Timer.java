@@ -1,4 +1,4 @@
-package com.example.flyswatter_001;
+package fly;
 
 import android.os.Handler;
 import android.util.Log;
@@ -7,9 +7,9 @@ import android.widget.TextView;
 
 public class Timer {
 
-    TextView text;
-    long startTimestamp;
-    Runnable onFinishCallback;
+    private TextView text;
+    private long startTimestamp;
+    private Runnable onFinishCallback;
 
     Timer(TextView timerText) {
         text = timerText;

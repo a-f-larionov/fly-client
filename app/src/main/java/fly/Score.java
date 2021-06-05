@@ -1,11 +1,11 @@
-package com.example.flyswatter_001;
+package fly;
 
 import android.widget.TextView;
 
 public class Score {
 
-    int score = 0;
-    TextView text;
+    private int score = 0;
+    private TextView text;
 
     Score(TextView scoreText) {
         text = scoreText;
