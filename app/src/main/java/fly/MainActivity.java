@@ -1,7 +1,5 @@
 package fly;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,15 +10,26 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.flyswatter_001.R;
+import androidx.appcompat.app.AppCompatActivity;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     private ImageView flyImage;
 
-    private Score score;
+    public Score score;
 
-    private Timer timer;
+    public Timer timer;
+
+    @Inject
+    public Fly fly;
+
+    @Inject
+    public Game game;
 
     private long catchTimeout = 1000 * 2;
     private int nextFlyMaxTimeout = 1000 * 2;
