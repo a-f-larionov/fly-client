@@ -22,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     private Timer timer;
 
-    private Fly fly;
-
     private long catchTimeout = 1000 * 2;
     private int nextFlyMaxTimeout = 1000 * 2;
 
@@ -34,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(
