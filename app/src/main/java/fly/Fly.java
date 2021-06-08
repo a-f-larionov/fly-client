@@ -1,17 +1,20 @@
 package fly;
 
-import android.view.View;
-import android.widget.ImageView;
-
-import com.example.flyswatter_001.R;
 
 public class Fly {
 
-    private ImageView flyImage;
+    private Game game = Game.getSingleton();
 
-    public Fly(View flyImage) {
+    private static Fly instance;
 
-        this.flyImage = (ImageView) flyImage;
+    private Fly() {
+
     }
 
+    public static Fly getSingleton() {
+        if (instance == null) {
+            instance = new Fly();
+        }
+        return instance;
+    }
 }

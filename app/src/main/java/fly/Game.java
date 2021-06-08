@@ -2,14 +2,24 @@ package fly;
 
 public class Game {
 
+    private Fly fly;
 
+    {
+        fly = Fly.getSingleton();
+    }
 
-    /**
-     * Начало игры
-     */
-    public void start() {
+    private Game() {
 
+    }
 
+    private static Game instance;
 
+    public static Game getSingleton() {
+
+        if (instance == null) {
+            instance = new Game();
+        }
+
+        return instance;
     }
 }
