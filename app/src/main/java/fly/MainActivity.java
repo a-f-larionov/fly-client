@@ -24,10 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
     private Fly fly;
 
-    private long catchTimeout = 1000 * 4;
-    private int nextFlyMaxTimeout = 1000 * 4;
+    private long catchTimeout = 1000 * 2;
+    private int nextFlyMaxTimeout = 1000 * 2;
 
     private int screenWidth;
+
     private int screenHeight;
 
     @Override
