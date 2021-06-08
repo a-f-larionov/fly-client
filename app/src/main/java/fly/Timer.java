@@ -11,8 +11,8 @@ public class Timer {
     private long startTimestamp;
     private Runnable onFinishCallback;
 
-    Timer(TextView timerText) {
-        text = timerText;
+    public void onCreateActivity() {
+        text = (TextView) ConfigComponents.getActivity().findViewById(R.id.timeoutText);
         loop();
     }
 

@@ -21,8 +21,10 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView flyImage;
 
+    @Inject
     public Score score;
 
+    @Inject
     public Timer timer;
 
     @Inject
@@ -31,44 +33,30 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     public Game game;
 
+    @Inject
+    public ScreenHelper screenHelper;
+
     private long catchTimeout = 1000 * 2;
     private int nextFlyMaxTimeout = 1000 * 2;
-
-    private int screenWidth;
-
-    private int screenHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ConfigComponents.setActivity(this);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(
-                WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN
-        );
-
+        // Must be BEFORE screenHelper.setFullScreen
+        screenHelper.setFullScreen();
         setContentView(R.layout.activity_main);
 
-        score = new Score((TextView) findViewById(R.id.scoreText));
-
-        timer = new Timer((TextView) findViewById(R.id.timeoutText));
-
-        timer.setOnTimeoutCallback(new Runnable() {
-            @Override
-            public void run() {
-                onTimeout();
-            }
-        });
+        screenHelper.onCreateActivity();
+        score.onCreateActivity();
+        timer.onCreateActivity();
+        fly.onCreateActivity();
 
         flyImage = findViewById(R.id.flyImage);
 
-        Display display = getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        screenWidth = size.x;
-        screenHeight = size.y;
+        timer.setOnTimeoutCallback(() -> onTimeout());
 
         View.OnClickListener oclBtn = new View.OnClickListener() {
             @Override
@@ -95,8 +83,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void showFly() {
         int x, y;
-        x = (int) ((screenWidth - flyImage.getWidth() - 10) * Math.random());
-        y = (int) ((screenHeight - flyImage.getHeight() - 10 - 100) * Math.random());
+        x = (int) ((screenHelper.getWidth() - flyImage.getWidth() - 10) * Math.random());
+        y = (int) ((screenHelper.getHeight() - flyImage.getHeight() - 10 - 100) * Math.random());
+
+
         flyImage.setX(x);
         flyImage.setY(y);
         flyImage.setVisibility(ImageView.VISIBLE);

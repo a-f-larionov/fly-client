@@ -2,13 +2,15 @@ package fly;
 
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class Score {
 
     private int score = 0;
     private TextView text;
 
-    Score(TextView scoreText) {
-        text = scoreText;
+    public void onCreateActivity() {
+        text = (TextView) ConfigComponents.getActivity().findViewById(R.id.scoreText);
     }
 
     public void increase(int value) {
